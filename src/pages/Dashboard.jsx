@@ -15,7 +15,7 @@ export default function Dashboard() {
     const token = localStorage.getItem("token");
 
     const response = await fetch(
-      "http://localhost:5000/api/dashboard/",
+      "http://localhost:5000/api/dashboard",
       {
         headers: {
           Authorization: `Bearer ${token}`,

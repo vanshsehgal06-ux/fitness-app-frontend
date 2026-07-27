@@ -30,6 +30,7 @@ export default function Signup(){
   );
   
   const data = await response.json();
+  console.log("Signup Response:", data);
   
   if (response.ok) {
     localStorage.setItem("token", data.token);
