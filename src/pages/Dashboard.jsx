@@ -10,43 +10,116 @@ export default function Dashboard() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
+  const token = localStorage.getItem("token");
+
   const fetchDashboard = async () => {
-  try {
-    const token = localStorage.getItem("token");
+    try {
+      const response = await fetch(
+        "http://localhost:5000/api/dashboard/",
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
 
-    const response = await fetch(
-      "http://localhost:5000/api/dashboard/",
-      {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.message);
       }
-    );
 
-    const data = await response.json();
-
-    if (!response.ok) {
-      throw new Error(data.message);
+      setDashboardData(data.dashboard);
+    } catch (err) {
+      setError(err.message);
+    } finally {
+      setLoading(false);
     }
+  };
 
-    setDashboardData(data.dashboard);
-  } catch (err) {
-    setError(err.message);
-  } finally {
-    setLoading(false);
+  useEffect(() => {
+    fetchDashboard();
+  }, []);
+
+  // Toggle Task
+  const toggleTask = async (index) => {
+    try {
+      const updatedTasks = [...dashboardData.todayPlanner.tasks];
+
+      updatedTasks[index] = {
+        ...updatedTasks[index],
+        completed: !updatedTasks[index].completed,
+      };
+
+      const response = await fetch(
+        `http://localhost:5000/api/planner/updateplanner/${dashboardData.todayPlanner._id}`,
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify({
+            tasks: updatedTasks,
+          }),
+        }
+      );
+
+      const data = await response.json();
+      console.log(data);
+
+      if (!response.ok) {
+        throw new Error(data.message);
+      }
+
+      fetchDashboard();
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  // Delete Task
+  const deleteTask = async (index) => {
+    try {
+      const updatedTasks = dashboardData.todayPlanner.tasks.filter(
+        (_, i) => i !== index
+      );
+
+      const response = await fetch(
+        `http://localhost:5000/api/planner/updateplanner/${dashboardData.todayPlanner._id}`,
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify({
+            tasks: updatedTasks,
+          }),
+        }
+      );
+
+      const data = await response.json();
+      console.log(data);
+
+      if (!response.ok) {
+        throw new Error(data.message);
+      }
+
+      fetchDashboard();
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  if (loading) {
+    return <h1 className="p-10 text-white">Loading...</h1>;
   }
-};
 
-useEffect(()=>{
-  fetchDashboard()
-},[])
+  if (error) {
+    return <h1 className="p-10 text-white">{error}</h1>;
+  }
 
-if(loading){
-  return <h1 className="text-white p-10">Loading....</h1>
-}
-if(error){
-  return <h1 className="text-white p-10">{error}</h1>
-}
   return (
     <div className="min-h-screen bg-[#020202]">
       <Sidebar
@@ -60,10 +133,16 @@ if(error){
         }`}
       >
         <div className="p-10">
-          <WelcomeSection user = {dashboardData.user}/>
-          <StatsCards dashboardData = {dashboardData}/>
-          <PlannerCard planner= {dashboardData.todayPlanner}
-          onPlannerCreated={fetchDashboard}/>
+          <WelcomeSection user={dashboardData.user} />
+
+          <StatsCards dashboardData={dashboardData} />
+
+          <PlannerCard
+            planner={dashboardData.todayPlanner}
+            onPlannerCreated={fetchDashboard}
+            onToggleTask={toggleTask}
+            onDeleteTask={deleteTask}
+          />
         </div>
       </main>
     </div>
