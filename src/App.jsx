@@ -5,6 +5,8 @@ import Signup from "./pages/Signup";
 import Dashboard from "./pages/Dashboard";
 import ProtectedRoute from "./components/ProtectedRoute";
 import PublicRoute from "./components/PublicRoute";
+import Profile from "./pages/Profile";
+import Workout from "./pages/dashboard/Workout";
 
 function App() {
   return (
@@ -13,7 +15,8 @@ function App() {
       <Route path="/login" element={<PublicRoute> <Login /> </PublicRoute>} />
       <Route path="/signup" element={<PublicRoute><Signup /> </PublicRoute>} />
       <Route path="/dashboard"  element={<ProtectedRoute> <Dashboard /> </ProtectedRoute>}/>
-
+      <Route path="/dashboard/profile" element={<Profile />}/>
+      <Route path="/dashboard/workouts" element={<Workout />}/>
     </Routes>
   );
 }

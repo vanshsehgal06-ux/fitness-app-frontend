@@ -8,12 +8,18 @@ import {
   LogOut,
   ChevronLeft,
   ChevronRight,
+  UserRound,
 } from "lucide-react";
 import { NavLink } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 
 const menuItems = [
+  {
+    name: "Profile",
+    icon: UserRound,
+    path: "/dashboard/profile",
+  },
   {
     name: "Dashboard",
     icon: LayoutDashboard,
@@ -28,11 +34,6 @@ const menuItems = [
     name: "Nutrition",
     icon: UtensilsCrossed,
     path: "/dashboard/nutrition",
-  },
-  {
-    name: "Progress",
-    icon: ChartSpline,
-    path: "/dashboard/progress",
   },
   {
     name: "AI Coach",
@@ -98,6 +99,7 @@ export default function Sidebar({ collapsed, setCollapsed }) {
             <NavLink
               key={item.name}
               to={item.path}
+              end={item.path === "/dashboard"}
               className={({ isActive }) =>
                 `mb-2 flex items-center rounded-2xl px-4 py-4 transition-all duration-300 ${
                   collapsed ? "justify-center" : "gap-4"
