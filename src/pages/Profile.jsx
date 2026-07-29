@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import Sidebar from "../components/dashboard/Sidebar";
+import Sidebar from "../components/dashboard/Sidebar.jsx";
 const API_URL = import.meta.env.VITE_API_URL;
 
 export default function Profile() {

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import Sidebar from "../../components/dashboard/Sidebar";
-import MealCard from "../../components/nutrition/MealCard";
-import AddMealModal from "../../components/nutrition/AddMealModal";
+import Sidebar from "../../components/dashboard/Sidebar.jsx";
+import MealCard from "../../components/nutrition/MealCard.jsx";
+import AddMealModal from "../../components/nutrition/AddMealModal.jsx";
 const API_URL = import.meta.env.VITE_API_URL;
 
 export default function Nutrition() {

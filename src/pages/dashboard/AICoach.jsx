@@ -1,8 +1,8 @@
 import { useEffect, useState, useRef } from "react";
-import Sidebar from "../../components/dashboard/Sidebar";
-import ChatBubble from "../../components/ai/ChatBubble";
-import ChatInput from "../../components/ai/ChatInput";
-import SuggestionCards from "../../components/ai/SuggestionCards";
+import Sidebar from "../../components/dashboard/Sidebar.jsx";
+import ChatBubble from "../../components/ai/ChatBubble.jsx";
+import ChatInput from "../../components/ai/ChatInput.jsx";
+import SuggestionCards from "../../components/ai/SuggestionCards.jsx";
 const API_URL = import.meta.env.VITE_API_URL;
 
 export default function AICoach() {

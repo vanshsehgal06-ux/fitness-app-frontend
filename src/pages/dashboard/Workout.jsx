@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import Sidebar from "../../components/dashboard/Sidebar";
-import WorkoutCard from "../../components/workout/WorkoutCard";
-import AddWorkoutModal from "../../components/workout/AddWorkoutModal";
+import Sidebar from "../../components/dashboard/Sidebar.jsx";
+import WorkoutCard from "../../components/workout/WorkoutCard.jsx";
+import AddWorkoutModal from "../../components/workout/AddWorkoutModal.jsx";
 const API_URL = import.meta.env.VITE_API_URL;
 
 export default function Workout() {

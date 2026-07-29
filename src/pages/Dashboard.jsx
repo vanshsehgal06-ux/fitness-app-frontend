@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import Sidebar from "../components/dashboard/Sidebar";
-import WelcomeSection from "@/components/dashboard/WelcomeSection";
-import StatsCards from "@/components/dashboard/StatsCards";
-import PlannerCard from "@/components/dashboard/PlannerCard";
+import Sidebar from "../components/dashboard/Sidebar.jsx";
+import WelcomeSection from "@/components/dashboard/WelcomeSection.jsx";
+import StatsCards from "@/components/dashboard/StatsCards.jsx";
+import PlannerCard from "@/components/dashboard/PlannerCard.jsx";
 const API_URL = import.meta.env.VITE_API_URL;
 
 export default function Dashboard() {

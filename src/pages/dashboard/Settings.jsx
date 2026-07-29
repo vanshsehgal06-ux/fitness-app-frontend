@@ -1,11 +1,11 @@
 import { useState } from "react";
 
-import Sidebar from "../../components/dashboard/Sidebar";
+import Sidebar from "../../components/dashboard/Sidebar.jsx";
 
-import AccountCard from "../../components/settings/AccountCard";
-import SecurityCard from "../../components/settings/SecurityCard";
-import PreferenceCard from "../../components/settings/PreferenceCard";
-import NotificationCard from "../../components/settings/NotificationCard";
+import AccountCard from "../../components/settings/AccountCard.jsx";
+import SecurityCard from "../../components/settings/SecurityCard.jsx";
+import PreferenceCard from "../../components/settings/PreferenceCard.jsx";
+import NotificationCard from "../../components/settings/NotificationCard.jsx";
 import DangerZone from "../../components/settings/DangerZone";
 
 export default function Settings() {
