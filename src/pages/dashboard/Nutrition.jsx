@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import Sidebar from "../../components/dashboard/Sidebar";
 import MealCard from "../../components/nutrition/MealCard";
 import AddMealModal from "../../components/nutrition/AddMealModal";
+const API_URL = import.meta.env.VITE_API_URL;
 
 export default function Nutrition() {
   const [collapsed, setCollapsed] = useState(false);
@@ -15,7 +16,7 @@ export default function Nutrition() {
       const token = localStorage.getItem("token");
 
       const response = await fetch(
-        "http://localhost:5000/api/nutrition",
+        `${API_URL}/api/nutrition`,
         {
           headers: {
             Authorization: `Bearer ${token}`,

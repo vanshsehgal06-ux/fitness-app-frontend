@@ -1,6 +1,9 @@
 import { useState } from "react";
 import toast from "react-hot-toast";
 
+const API_URL = import.meta.env.VITE_API_URL;
+
+
 export default function TaskModal({
   isOpen,
   onClose,
@@ -28,8 +31,7 @@ export default function TaskModal({
         },
       ];
 
-      const response = await fetch(
-        `http://localhost:5000/api/planner/updateplanner/${planner._id}`,
+      const response = await fetch(`${API_URL}/api/planner/updateplanner/${planner._id}`,
         {
           method: "PUT",
           headers: {

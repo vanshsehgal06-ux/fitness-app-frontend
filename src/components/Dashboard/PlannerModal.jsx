@@ -3,6 +3,8 @@ import toast from "react-hot-toast";
 
 export default function PlannerModal({ isOpen, onClose, onPlannerCreated }) {
   const [tasks, setTasks] = useState([""]);
+  const API_URL = import.meta.env.VITE_API_URL;
+
   const handleCreatePlanner = async () => {
     const filteredTasks = tasks.filter((task) => task.trim() !== "");
 
@@ -14,8 +16,7 @@ export default function PlannerModal({ isOpen, onClose, onPlannerCreated }) {
   try {
     const token = localStorage.getItem("token");
 
-    const response = await fetch(
-      "http://localhost:5000/api/planner/createplanner",
+    const response = await fetch(`${API_URL}/api/planner/createplanner`,
       {
         method: "POST",
         headers: {

@@ -1,8 +1,11 @@
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 
+const API_URL = import.meta.env.VITE_API_URL;
+
 export default function ProfileCard() {
   const [loading, setLoading] = useState(true);
+  const API_URL = import.meta.env.VITE_API_URL;
 
   const [profile, setProfile] = useState({
     userName: "",
@@ -23,8 +26,7 @@ export default function ProfileCard() {
     try {
       const token = localStorage.getItem("token");
 
-      const response = await fetch(
-        "http://localhost:5000/api/profile",
+      const response = await fetch(`${API_URL}/api/profile`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -57,8 +59,7 @@ export default function ProfileCard() {
     try {
       const token = localStorage.getItem("token");
 
-      const response = await fetch(
-        "http://localhost:5000/api/profile",
+      const response = await fetch(`${API_URL}/api/profile`),
         {
           method: "PUT",
           headers: {

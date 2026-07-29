@@ -1,6 +1,9 @@
 import { useState } from "react";
 import toast from "react-hot-toast";
 
+const API_URL = import.meta.env.VITE_API_URL;
+
+
 export default function AddMealModal({
   isOpen,
   onClose,
@@ -16,8 +19,7 @@ export default function AddMealModal({
 
       const token = localStorage.getItem("token");
 
-      const response = await fetch(
-        "http://localhost:5000/api/nutrition/create",
+      const response = await fetch(`${API_URL}/api/nutrition/create`,
         {
           method: "POST",
           headers: {"Content-Type": "application/json", Authorization:`Bearer ${token}`},

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import toast from "react-hot-toast";
+const API_URL = import.meta.env.VITE_API_URL;
 
 export default function AddWorkoutModal({
   isOpen,
@@ -22,7 +23,7 @@ export default function AddWorkoutModal({
       const token = localStorage.getItem("token");
 
       const response = await fetch(
-        "http://localhost:5000/api/workout/create",
+        `${API_URL}/api/workout/create`,
         {
           method: "POST",
           headers: {

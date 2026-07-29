@@ -1,5 +1,6 @@
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+const API_URL = import.meta.env.VITE_API_URL;
 
 export default function DangerZone() {
   const navigate = useNavigate();
@@ -21,7 +22,7 @@ export default function DangerZone() {
       }
 
       const response = await fetch(
-        "http://localhost:5000/api/profile/delete",
+        `${API_URL}/api/profile/delete`,
         {
           method: "DELETE",
           headers: {

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import toast from "react-hot-toast";
+const API_URL = import.meta.env.VITE_API_URL;
 
 export default function AddExerciseModal({
   isOpen,
@@ -33,7 +34,7 @@ export default function AddExerciseModal({
       ];
 
       const response = await fetch(
-        `http://localhost:5000/api/workout/${workout._id}`,
+        `${API_URL}/api/workout/${workout._id}`,
         {
           method: "PUT",
           headers: {

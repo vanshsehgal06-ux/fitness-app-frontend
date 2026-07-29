@@ -3,6 +3,7 @@ import toast from "react-hot-toast";
 import { Plus, Trash2 } from "lucide-react";
 import ExerciseItem from "./ExerciseItem";
 import AddExerciseModal from "./AddExerciseModal";
+const API_URL = import.meta.env.VITE_API_URL;
 
 export default function WorkoutCard({
   workout,
@@ -22,7 +23,7 @@ export default function WorkoutCard({
       };
 
       const response = await fetch(
-        `http://localhost:5000/api/workout/${workout._id}`,
+        `${API_URL}/api/workout/${workout._id}`,
         {
           method: "PUT",
           headers: {
@@ -54,7 +55,7 @@ export default function WorkoutCard({
       );
 
       const response = await fetch(
-        `http://localhost:5000/api/workout/${workout._id}`,
+        `${API_URL}/api/workout/${workout._id}`,
         {
           method: "PUT",
           headers: {
@@ -85,7 +86,7 @@ export default function WorkoutCard({
   const deleteWorkout = async () => {
   try {
     const response = await fetch(
-      `http://localhost:5000/api/workout/${workout._id}`,
+      `${API_URL}/api/workout/${workout._id}`,
       {
         method: "DELETE",
         headers: { Authorization: `Bearer ${token}`,},

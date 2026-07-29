@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import Sidebar from "../../components/dashboard/Sidebar";
 import WorkoutCard from "../../components/workout/WorkoutCard";
 import AddWorkoutModal from "../../components/workout/AddWorkoutModal";
+const API_URL = import.meta.env.VITE_API_URL;
 
 export default function Workout() {
   const [collapsed, setCollapsed] = useState(false);
@@ -15,7 +16,7 @@ export default function Workout() {
       const token = localStorage.getItem("token");
 
       const response = await fetch(
-        "http://localhost:5000/api/workout",
+        `${API_URL}/api/workout`,
         {
           headers: {
             Authorization: `Bearer ${token}`,

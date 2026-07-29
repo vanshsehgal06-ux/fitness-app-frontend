@@ -1,5 +1,6 @@
 import { useState } from "react";
 import toast from "react-hot-toast";
+const API_URL = import.meta.env.VITE_API_URL;
 
 export default function SecurityCard() {
   const [formData, setFormData] = useState({
@@ -36,7 +37,7 @@ export default function SecurityCard() {
       const token = localStorage.getItem("token");
 
       const response = await fetch(
-        "http://localhost:5000/api/profile/change-password",
+        `${API_URL}/api/profile/change-password`,
         {
           method: "PUT",
           headers: {

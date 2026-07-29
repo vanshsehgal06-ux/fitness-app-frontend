@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
+const API_URL = import.meta.env.VITE_API_URL;
 
 export default function AccountCard() {
   const [formData, setFormData] = useState({
@@ -14,7 +15,7 @@ export default function AccountCard() {
       const token = localStorage.getItem("token");
 
       const response = await fetch(
-        "http://localhost:5000/api/profile/me",
+        `${API_URL}/api/profile/me`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -54,8 +55,7 @@ export default function AccountCard() {
     try {
       const token = localStorage.getItem("token");
 
-      const response = await fetch(
-        "http://localhost:5000/api/profile/update",
+      const response = await fetch(`${API_URL}/api/profile/update`,
         {
           method: "PUT",
           headers: {

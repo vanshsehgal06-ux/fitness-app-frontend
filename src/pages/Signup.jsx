@@ -2,6 +2,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import CinematicBackground from "../components/background/CinematicBackground";
 import toast from "react-hot-toast";
+const API_URL = import.meta.env.VITE_API_URL;
 
 export default function Signup(){
   const navigate = useNavigate();
@@ -17,7 +18,7 @@ export default function Signup(){
   console.log(password);
 
   try {
-    const response = await fetch("http://localhost:5000/api/auth/signup",
+    const response = await fetch(`${API_URL}/api/auth/signup`,
       {
         method: "POST",
         headers: {"Content-Type": "application/json"},

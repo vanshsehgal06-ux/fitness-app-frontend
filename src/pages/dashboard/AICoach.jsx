@@ -3,6 +3,7 @@ import Sidebar from "../../components/dashboard/Sidebar";
 import ChatBubble from "../../components/ai/ChatBubble";
 import ChatInput from "../../components/ai/ChatInput";
 import SuggestionCards from "../../components/ai/SuggestionCards";
+const API_URL = import.meta.env.VITE_API_URL;
 
 export default function AICoach() {
   const [collapsed, setCollapsed] = useState(false);
@@ -15,7 +16,7 @@ export default function AICoach() {
       const token = localStorage.getItem("token");
 
       const response = await fetch(
-        "http://localhost:5000/api/ai/history",
+        `${API_URL}/api/ai/history`,
         {
           headers: {
             Authorization: `Bearer ${token}`,

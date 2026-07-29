@@ -3,6 +3,9 @@ import { useState } from "react";
 import toast from "react-hot-toast";
 import CinematicBackground from "../components/background/CinematicBackground";
 
+const API_URL = import.meta.env.VITE_API_URL;
+
+
 export default function Login() {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
@@ -14,7 +17,7 @@ export default function Login() {
 
   try {
     const response = await fetch(
-      "http://localhost:5000/api/auth/login",
+      `${API_URL}/api/auth/login`,
       {
         method: "POST",
         headers: {

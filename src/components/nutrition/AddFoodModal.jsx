@@ -1,6 +1,9 @@
 import { useState } from "react";
 import toast from "react-hot-toast";
 
+const API_URL = import.meta.env.VITE_API_URL;
+
+
 export default function AddFoodModal({
   isOpen,
   onClose,
@@ -46,7 +49,7 @@ export default function AddFoodModal({
       );
 
       const response = await fetch(
-        `http://localhost:5000/api/nutrition/${meal._id}`,
+        `${API_URL}/api/nutrition/${meal._id}`,
         {
           method: "PUT",
           headers: {

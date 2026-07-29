@@ -1,9 +1,11 @@
 import { useState } from "react";
 import { Plus, Trash2 } from "lucide-react";
 import toast from "react-hot-toast";
-
 import FoodItem from "./FoodItem";
 import AddFoodModal from "./AddFoodModal";
+
+const API_URL = import.meta.env.VITE_API_URL;
+
 
 export default function MealCard({
   meal,
@@ -16,7 +18,7 @@ export default function MealCard({
   const deleteMeal = async () => {
     try {
       const response = await fetch(
-        `http://localhost:5000/api/nutrition/${meal._id}`,
+        `${API_URL}/api/nutrition/${meal._id}`,
         {
           method: "DELETE",
           headers: {

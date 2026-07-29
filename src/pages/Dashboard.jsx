@@ -3,6 +3,7 @@ import Sidebar from "../components/dashboard/Sidebar";
 import WelcomeSection from "@/components/dashboard/WelcomeSection";
 import StatsCards from "@/components/dashboard/StatsCards";
 import PlannerCard from "@/components/dashboard/PlannerCard";
+const API_URL = import.meta.env.VITE_API_URL;
 
 export default function Dashboard() {
   const [collapsed, setCollapsed] = useState(false);
@@ -15,7 +16,7 @@ export default function Dashboard() {
   const fetchDashboard = async () => {
     try {
       const response = await fetch(
-        "http://localhost:5000/api/dashboard",
+        `${API_URL}/api/dashboard`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -52,7 +53,7 @@ export default function Dashboard() {
       };
 
       const response = await fetch(
-        `http://localhost:5000/api/planner/updateplanner/${dashboardData.todayPlanner._id}`,
+        `${API_URL}/api/planner/updateplanner/${dashboardData.todayPlanner._id}`,
         {
           method: "PUT",
           headers: {
@@ -85,7 +86,7 @@ export default function Dashboard() {
       );
 
       const response = await fetch(
-        `http://localhost:5000/api/planner/updateplanner/${dashboardData.todayPlanner._id}`,
+        `${API_URL}/api/planner/updateplanner/${dashboardData.todayPlanner._id}`,
         {
           method: "PUT",
           headers: {

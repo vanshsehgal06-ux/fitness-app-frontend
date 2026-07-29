@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import Sidebar from "../components/dashboard/Sidebar";
+const API_URL = import.meta.env.VITE_API_URL;
 
 export default function Profile() {
   const [collapsed, setCollapsed] = useState(false);
@@ -19,9 +20,9 @@ export default function Profile() {
   const fetchProfile = async () => {
     try {
       const token = localStorage.getItem("token");
-      const response = await fetch(
-        "http://localhost:5000/api/profile/me",
-        {headers:{ Authorization:`Bearer ${token}`}});
+      const response = await fetch(`${API_URL}/api/profile/me`,{
+        headers:{ Authorization:`Bearer ${token}`},
+        });
 
       const data = await response.json();
       if(!response.ok){
@@ -62,7 +63,7 @@ export default function Profile() {
     try{
       const token = localStorage.getItem("token");
       const response = await fetch(
-        "http://localhost:5000/api/profile/update",
+        `${API_URL}/api/profile/update`,
         {method:"PUT", headers:{"Content-Type":"application/json",Authorization:`Bearer ${token}`},
           body:JSON.stringify(formData)
         }

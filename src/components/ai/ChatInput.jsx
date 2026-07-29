@@ -5,6 +5,8 @@ import toast from "react-hot-toast";
 export default function ChatInput({input, setInput, messages, setMessages}) {
  const [loading, setLoading] = useState(false);
 
+ const API_URL = import.meta.env.VITE_API_URL;
+
   const handleSend = async () => {
     if (!input.trim() || loading) return;
 
@@ -22,9 +24,7 @@ export default function ChatInput({input, setInput, messages, setMessages}) {
     try {
       const token = localStorage.getItem("token");
 
-      const response = await fetch(
-        "http://localhost:5000/api/ai/chat",
-        {
+      const response = await fetch(`${API_URL}/api/ai/chat`,{
           method: "POST",
           headers: {
             "Content-Type": "application/json",
