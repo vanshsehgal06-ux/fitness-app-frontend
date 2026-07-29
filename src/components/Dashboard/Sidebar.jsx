@@ -55,37 +55,37 @@ export default function Sidebar({ collapsed, setCollapsed }) {
   toast.success("Logged out successfully!");
 
   setTimeout(() => {
-    navigate("/login");
+    navigate("/", { replace: true });
   }, 500);
 };
   return (
     <aside
-      className={`fixed left-0 top-0 z-50 flex h-screen flex-col border-r border-white/10 bg-black/80 backdrop-blur-xl transition-all duration-300 ${
+      className={`fixed left-0 top-0 z-50 flex h-screen flex-col border-r border-border bg-card backdrop-blur-xl transition-all duration-300 ${
         collapsed ? "w-24" : "w-72"
       }`}
     >
       {/* Logo */}
-      <div className="relative border-b border-white/10 p-6">
+      <div className="relative border-b border-border p-6">
         <button
           onClick={() => setCollapsed(!collapsed)}
-          className="absolute -right-4 top-8 flex h-8 w-8 items-center justify-center rounded-full border border-white/10 bg-zinc-900 text-white"
-        >
+          className="absolute -right-4 top-8 flex h-8 w-8 items-center justify-center rounded-full border border-border bg-card text-foreground shadow"
+          >
           {collapsed ? <ChevronRight size={16} /> : <ChevronLeft size={16} />}
         </button>
 
         {!collapsed ? (
           <>
-            <h1 className="text-2xl font-black tracking-[0.25em] text-white">
+            <h1 className="text-2xl font-black tracking-[0.25em] text-foreground">
               FITNESS
             </h1>
 
-            <p className="mt-1 text-sm tracking-[0.25em] text-gray-500">
+            <p className="mt-1 text-sm tracking-[0.25em] text-muted-foreground">
               PLANET
             </p>
           </>
         ) : (
           <div className="flex justify-center">
-            <Dumbbell className="h-8 w-8 text-white" />
+            <Dumbbell className="h-8 w-8 text-foreground" />
           </div>
         )}
       </div>
@@ -103,11 +103,7 @@ export default function Sidebar({ collapsed, setCollapsed }) {
               className={({ isActive }) =>
                 `mb-2 flex items-center rounded-2xl px-4 py-4 transition-all duration-300 ${
                   collapsed ? "justify-center" : "gap-4"
-                } ${
-                  isActive
-                    ? "bg-white text-black"
-                    : "text-gray-400 hover:bg-white/10 hover:text-white"
-                }`
+                } ${ isActive ? "bg-primary text-primary-foreground shadow-lg" : "text-muted-foreground hover:bg-accent hover:text-accent-foreground"}`
               }
             >
               <Icon size={22} />
@@ -121,10 +117,10 @@ export default function Sidebar({ collapsed, setCollapsed }) {
       </nav>
 
       {/* Logout */}
-      <div className="border-t border-white/10 p-3">
+      <div className="border-t border-border p-3">
         <button
         onClick={handleLogout}
-          className={`flex w-full items-center rounded-2xl px-4 py-4 text-gray-400 transition hover:bg-red-500/10 hover:text-red-400 ${
+          className={`flex w-full items-center rounded-2xl px-4 py-4 text-muted-foreground transition hover:bg-red-500/10 hover:text-red-400 ${
             collapsed ? "justify-center" : "gap-4"
           }`}
         >

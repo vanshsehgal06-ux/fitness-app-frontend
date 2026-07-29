@@ -55,7 +55,6 @@ export default function TaskModal({
       onTaskAdded();
 
       onClose();
-
     } catch (err) {
       toast.error(err.message);
     }
@@ -63,40 +62,34 @@ export default function TaskModal({
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70">
-
-      <div className="w-full max-w-md rounded-2xl bg-[#111] p-8">
-
-        <h2 className="text-2xl font-bold text-white">
+      <div className="w-full max-w-md rounded-2xl border border-border bg-card p-8">
+        <h2 className="text-2xl font-bold text-foreground">
           Add New Task
         </h2>
 
         <input
-          className="mt-6 w-full rounded-xl border border-white/10 bg-[#1a1a1a] p-4 text-white outline-none"
+          className="mt-6 w-full rounded-xl border border-border bg-background p-4 text-foreground placeholder:text-muted-foreground outline-none focus:border-foreground"
           placeholder="Drink Water..."
           value={title}
           onChange={(e) => setTitle(e.target.value)}
         />
 
         <div className="mt-8 flex justify-end gap-3">
-
           <button
             onClick={onClose}
-            className="rounded-xl border border-white/10 px-5 py-3 text-white"
+            className="rounded-xl border border-border px-5 py-3 text-foreground transition hover:bg-accent"
           >
             Cancel
           </button>
 
           <button
             onClick={handleAddTask}
-            className="rounded-xl bg-white px-5 py-3 font-semibold text-black"
+            className="rounded-xl bg-primary px-5 py-3 font-semibold text-primary-foreground transition hover:opacity-90"
           >
             Add Task
           </button>
-
         </div>
-
       </div>
-
     </div>
   );
 }

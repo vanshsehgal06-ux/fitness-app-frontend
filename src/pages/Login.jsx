@@ -7,6 +7,7 @@ export default function Login() {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [rememberMe, setRememberMe] = useState(false);
 
   const handleLogin = async (e) => {
   e.preventDefault();
@@ -51,6 +52,8 @@ export default function Login() {
   }
 };
 
+
+
   return (
     <CinematicBackground>
       <div className="min-h-screen flex items-center justify-center px-6">
@@ -63,7 +66,7 @@ export default function Login() {
             </h1>
 
             <p className="text-gray-400 mt-2">
-              Sign in to continue your fitness journey.
+              Log in to continue your fitness journey.
             </p>
           </div>
 
@@ -74,13 +77,7 @@ export default function Login() {
                 Email
               </label>
 
-              <input
-                type="email"
-                placeholder="john@example.com"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                className="mt-2 w-full rounded-xl bg-white/5 border border-white/10 px-4 py-3 text-white placeholder-gray-500 outline-none focus:border-white transition"
-              />
+              <input type="email" placeholder="john@example.com" value={email} onChange={(e) => setEmail(e.target.value)} className="mt-2 w-full rounded-xl bg-white/5 border border-white/10 px-4 py-3 text-white placeholder-gray-500 outline-none focus:border-white transition"/>
             </div>
 
             <div>
@@ -88,24 +85,11 @@ export default function Login() {
                 Password
               </label>
 
-              <input
-                type="password"
-                placeholder="********"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                className="mt-2 w-full rounded-xl bg-white/5 border border-white/10 px-4 py-3 text-white placeholder-gray-500 outline-none focus:border-white transition"
+              <input type="password" placeholder="********" value={password} onChange={(e) => setPassword(e.target.value)} className="mt-2 w-full rounded-xl bg-white/5 border border-white/10 px-4 py-3 text-white placeholder-gray-500 outline-none focus:border-white transition"
               />
             </div>
 
-            <div className="flex items-center justify-between text-sm">
-              <label className="flex items-center gap-2 text-gray-400">
-                <input
-                  type="checkbox"
-                  className="checkbox checkbox-sm checkbox-neutral"
-                />
-                Remember me
-              </label>
-
+            <div>
               <button
                 type="button"
                 className="text-gray-300 hover:text-white transition"

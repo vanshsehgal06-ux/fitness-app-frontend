@@ -14,17 +14,17 @@ export default function PlannerCard({
 
   return (
     <>
-      <div className="mt-10 rounded-2xl border border-white/10 bg-[#111] p-6">
+      <div className="mt-10 rounded-2xl border border-border bg-card p-6">
         {/* Header */}
         <div className="flex items-center justify-between">
-          <h2 className="text-2xl font-bold text-white">
+          <h2 className="text-2xl font-bold text-foreground">
             Today's Planner
           </h2>
 
           {planner.tasks.length > 0 && (
             <button
               onClick={() => setTaskOpen(true)}
-              className="flex items-center gap-2 rounded-xl bg-white px-4 py-2 text-black transition hover:bg-gray-200"
+              className="flex items-center gap-2 rounded-xl bg-primary px-4 py-2 text-primary-foreground transition hover:opacity-90"
             >
               <Plus size={18} />
               Add Task
@@ -37,17 +37,17 @@ export default function PlannerCard({
           <div className="mt-6 flex flex-col items-center justify-center py-10">
             <div className="text-5xl">📅</div>
 
-            <h3 className="mt-4 text-xl font-semibold text-white">
+            <h3 className="mt-4 text-xl font-semibold text-foreground">
               No Planner Found
             </h3>
 
-            <p className="mt-2 text-center text-gray-400">
+            <p className="mt-2 text-center  text-muted-foreground">
               Create today's planner to start tracking your fitness journey.
             </p>
 
             <button
               onClick={() => setPlannerOpen(true)}
-              className="mt-6 rounded-xl bg-white px-6 py-3 font-semibold text-black transition hover:bg-gray-200"
+              className="mt-6 rounded-xl bg-primary px-6 py-3 font-semibold text-primary-foreground transition hover:opacity-90"
             >
               Create Planner
             </button>
@@ -58,13 +58,13 @@ export default function PlannerCard({
             {planner.tasks.map((task, index) => (
               <div
                 key={index}
-                className="flex items-center justify-between rounded-xl bg-[#1a1a1a] p-4"
+                className="flex items-center justify-between rounded-xl bg-muted p-4"
               >
                 <h3
                   className={`text-lg ${
                     task.completed
                       ? "text-gray-500 line-through"
-                      : "text-white"
+                      : "text-foreground"
                   }`}
                 >
                   {task.title}
@@ -83,14 +83,14 @@ export default function PlannerCard({
 
                   <button
                     onClick={() => onToggleTask(index)}
-                    className="rounded-lg bg-green-500 p-2 text-white transition hover:bg-green-600"
+                    className="rounded-lg bg-green-500 p-2 text-foreground transition hover:bg-green-600"
                   >
                     <Check size={16} />
                   </button>
 
                   <button
                     onClick={() => onDeleteTask(index)}
-                    className="rounded-lg bg-red-500 p-2 text-white transition hover:bg-red-600"
+                    className="rounded-lg bg-red-500 p-2 text-foreground transition hover:bg-red-600"
                   >
                     <Trash2 size={16} />
                   </button>

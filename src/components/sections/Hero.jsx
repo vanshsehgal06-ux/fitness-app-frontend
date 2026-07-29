@@ -1,62 +1,58 @@
-import { ArrowRight, ChevronDown } from "lucide-react";
+import { ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
+
+const token = localStorage.getItem("token");
 
 export default function Hero() {
   return (
-    <section className="relative flex min-h-screen items-center justify-center overflow-hidden bg-[#020202] pt-36">
+  <section id="home" className="relative flex h-[110vh]  items-center overflow-hidden">
 
-      {/* Background Glow */}
-      <div className="absolute inset-0">
-        <div className="absolute left-1/2 top-1/2 h-[700px] w-[700px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-white/5 blur-[180px]" />
-      </div>
+    {/* Background Video */}
+    <video autoPlay loop muted playsInline className="absolute inset-0 h-full w-full object-cover sepia">
+      <source src="/videos/GYM.mp4" type="video/mp4" />
+    </video>
 
-      <div className="relative z-10 flex flex-col items-center text-center px-6">
+    {/* Optional Glow */}
+    <div className="absolute left-[-200px] top-1/2 h-[700px] w-[700px] -translate-y-1/2 rounded-full bg-white/5 blur-[180px]" />
 
-        {/* Badge */}
+    {/* Content */}
+    <div className="relative z-10 mx-auto flex ml-12 max-w-7xl items-center py-24">
 
-        <div className="mb-8 rounded-full border border-white/10 bg-white/5 px-5 py-2 backdrop-blur-md">
-          <span className="text-sm text-gray-300">
-            ✨ AI Powered Fitness Platform
+      <div className="max-w-3xl">
+
+        <h2 className="leading-none tracking-tight">
+
+          <span className="block text-7xl font-black text-white lg:text-[8rem]">
+            TRAIN
           </span>
-        </div>
 
-        {/* Heading */}
+          <span className="block text-7xl font-black text-white lg:text-[8rem]">
+            SMARTER.
+          </span>
 
-        <h1 className="text-6xl font-black uppercase leading-none tracking-tight text-white md:text-8xl lg:text-[9rem]">
+          <span className="mt-6 block text-7xl font-black text-gray-300 lg:text-[8rem]">
+            LIVE
+          </span>
 
-          FITNESS
+          <span className="block text-7xl font-black text-gray-300 lg:text-[8rem]">
+            STRONGER.
+          </span>
 
-          <br />
+        </h2>
 
-          PLANET
+        <div className="mt-12 flex flex-wrap gap-5">
 
-        </h1>
+          <Link to={token ? "/dashboard" : "/signup"} className="btn rounded-full bg-white px-8 text-black hover:bg-gray-200">
+            Start Training <ArrowRight size={18} />
+            </Link>
 
-        {/* Subtitle */}
-
-        <p className="mt-8 max-w-2xl text-lg leading-8 text-gray-400">
-
-          Transform your body with personalized workouts,
-          smart nutrition tracking and AI-powered coaching —
-          all in one modern platform.
-
-        </p>
-
-        {/* Buttons */}
-
-       <div className="mt-12">
-          <button className="btn btn-outline rounded-full border-white/20 px-10 text-white hover:bg-white hover:text-black">
-            Explore
-          </button>
-        </div>
-
-        {/* Scroll Indicator */}
-
-        <div className="mt-16 animate-bounce text-gray-500">
-          <ChevronDown size={28} />
-        </div>
-
+          <button onClick={() =>document.getElementById("programs")?.scrollIntoView({behavior: "smooth"})}
+           className="btn btn-outline rounded-full border-white/30 bg-white/30 px-8 text-white backdrop-blur-md hover:bg-white hover:text-black">
+             Watch Demo
+             </button>
+             </div>
       </div>
-
-    </section>
-  );
+    </div>
+  </section>
+);
 }

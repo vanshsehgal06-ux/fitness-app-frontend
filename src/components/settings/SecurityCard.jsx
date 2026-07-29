@@ -70,69 +70,69 @@ export default function SecurityCard() {
     }
   };
 
-  return (
-    <div className="rounded-2xl border border-white/10 bg-[#111] p-6">
-      <h2 className="text-2xl font-bold text-white">
-        Security
-      </h2>
+ return (
+  <div className="rounded-2xl border border-border bg-card p-6">
+    <h2 className="text-2xl font-bold text-foreground">
+      Security
+    </h2>
 
-      <p className="mt-2 text-gray-400">
-        Change your account password.
-      </p>
+    <p className="mt-2 text-muted-foreground">
+      Change your account password.
+    </p>
 
-      <div className="mt-6 space-y-5">
+    <div className="mt-6 space-y-5">
 
-        <div>
-          <label className="mb-2 block text-sm text-gray-400">
-            Current Password
-          </label>
+      <div>
+        <label className="mb-2 block text-sm text-muted-foreground">
+          Current Password
+        </label>
 
-          <input
-            type="password"
-            name="currentPassword"
-            value={formData.currentPassword}
-            onChange={handleChange}
-            className="w-full rounded-xl bg-[#1a1a1a] px-4 py-3 text-white outline-none"
-          />
-        </div>
-
-        <div>
-          <label className="mb-2 block text-sm text-gray-400">
-            New Password
-          </label>
-
-          <input
-            type="password"
-            name="newPassword"
-            value={formData.newPassword}
-            onChange={handleChange}
-            className="w-full rounded-xl bg-[#1a1a1a] px-4 py-3 text-white outline-none"
-          />
-        </div>
-
-        <div>
-          <label className="mb-2 block text-sm text-gray-400">
-            Confirm Password
-          </label>
-
-          <input
-            type="password"
-            name="confirmPassword"
-            value={formData.confirmPassword}
-            onChange={handleChange}
-            className="w-full rounded-xl bg-[#1a1a1a] px-4 py-3 text-white outline-none"
-          />
-        </div>
-
-        <button
-          onClick={handleUpdatePassword}
-          disabled={loading}
-          className="rounded-xl bg-white px-6 py-3 font-semibold text-black transition hover:bg-gray-200 disabled:opacity-50"
-        >
-          {loading ? "Updating..." : "Update Password"}
-        </button>
-
+        <input
+          type="password"
+          name="currentPassword"
+          value={formData.currentPassword}
+          onChange={handleChange}
+          className="w-full rounded-xl border border-border bg-background px-4 py-3 text-foreground placeholder:text-muted-foreground outline-none focus:border-foreground"
+        />
       </div>
+
+      <div>
+        <label className="mb-2 block text-sm text-muted-foreground">
+          New Password
+        </label>
+
+        <input
+          type="password"
+          name="newPassword"
+          value={formData.newPassword}
+          onChange={handleChange}
+          className="w-full rounded-xl border border-border bg-background px-4 py-3 text-foreground placeholder:text-muted-foreground outline-none focus:border-foreground"
+        />
+      </div>
+
+      <div>
+        <label className="mb-2 block text-sm text-muted-foreground">
+          Confirm Password
+        </label>
+
+        <input
+          type="password"
+          name="confirmPassword"
+          value={formData.confirmPassword}
+          onChange={handleChange}
+          className="w-full rounded-xl border border-border bg-background px-4 py-3 text-foreground placeholder:text-muted-foreground outline-none focus:border-foreground"
+        />
+      </div>
+
+      <button
+        onClick={handleUpdatePassword}
+        disabled={loading}
+        className="rounded-xl bg-primary px-6 py-3 font-semibold text-primary-foreground transition hover:opacity-90 disabled:opacity-50"
+      >
+        {loading ? "Updating..." : "Update Password"}
+      </button>
+
     </div>
-  );
+  </div>
+);
 }

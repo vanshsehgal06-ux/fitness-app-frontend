@@ -10,12 +10,19 @@ export default function PreferenceCard() {
   });
 
   useEffect(() => {
-    const saved = localStorage.getItem("preferences");
+  const saved = localStorage.getItem("preferences");
 
-    if (saved) {
-      setPreferences(JSON.parse(saved));
-    }
-  }, []);
+  if (saved) {
+    setPreferences(JSON.parse(saved));
+  }
+}, []);
+
+  useEffect(() => {
+    document.documentElement.classList.toggle(
+      "dark",
+      preferences.theme === "dark"
+    );
+  }, [preferences.theme]);
 
   const handleChange = (e) => {
     setPreferences((prev) => ({
@@ -30,23 +37,29 @@ export default function PreferenceCard() {
       JSON.stringify(preferences)
     );
 
+    document.documentElement.classList.toggle(
+      "dark",
+      preferences.theme === "dark"
+    );
+
     toast.success("Preferences saved!");
   };
 
   return (
-    <div className="rounded-2xl border border-white/10 bg-[#111] p-6">
-      <h2 className="text-2xl font-bold text-white">
+    <div className="rounded-2xl border border-border bg-card p-6">
+      <h2 className="text-2xl font-bold text-foreground">
         Preferences
       </h2>
 
-      <p className="mt-2 text-gray-400">
+      <p className="mt-2 text-muted-foreground">
         Customize how the app works for you.
       </p>
 
       <div className="mt-6 space-y-5">
 
+        {/* Theme */}
         <div>
-          <label className="mb-2 block text-sm text-gray-400">
+          <label className="mb-2 block text-sm text-muted-foreground">
             Theme
           </label>
 
@@ -54,15 +67,16 @@ export default function PreferenceCard() {
             name="theme"
             value={preferences.theme}
             onChange={handleChange}
-            className="w-full rounded-xl bg-[#1a1a1a] px-4 py-3 text-white outline-none"
+            className="w-full rounded-xl border border-border bg-background px-4 py-3 text-foreground outline-none"
           >
             <option value="dark">Dark</option>
             <option value="light">Light</option>
           </select>
         </div>
 
+        {/* Weight Unit */}
         <div>
-          <label className="mb-2 block text-sm text-gray-400">
+          <label className="mb-2 block text-sm text-muted-foreground">
             Weight Unit
           </label>
 
@@ -70,15 +84,16 @@ export default function PreferenceCard() {
             name="weightUnit"
             value={preferences.weightUnit}
             onChange={handleChange}
-            className="w-full rounded-xl bg-[#1a1a1a] px-4 py-3 text-white outline-none"
+            className="w-full rounded-xl border border-border bg-background px-4 py-3 text-foreground outline-none"
           >
             <option value="kg">Kilograms (kg)</option>
             <option value="lbs">Pounds (lbs)</option>
           </select>
         </div>
 
+        {/* Height Unit */}
         <div>
-          <label className="mb-2 block text-sm text-gray-400">
+          <label className="mb-2 block text-sm text-muted-foreground">
             Height Unit
           </label>
 
@@ -86,15 +101,16 @@ export default function PreferenceCard() {
             name="heightUnit"
             value={preferences.heightUnit}
             onChange={handleChange}
-            className="w-full rounded-xl bg-[#1a1a1a] px-4 py-3 text-white outline-none"
+            className="w-full rounded-xl border border-border bg-background px-4 py-3 text-foreground outline-none"
           >
             <option value="cm">Centimeters (cm)</option>
             <option value="ft">Feet (ft)</option>
           </select>
         </div>
 
+        {/* Language */}
         <div>
-          <label className="mb-2 block text-sm text-gray-400">
+          <label className="mb-2 block text-sm text-muted-foreground">
             Language
           </label>
 
@@ -102,7 +118,7 @@ export default function PreferenceCard() {
             name="language"
             value={preferences.language}
             onChange={handleChange}
-            className="w-full rounded-xl bg-[#1a1a1a] px-4 py-3 text-white outline-none"
+            className="w-full rounded-xl border border-border bg-background px-4 py-3 text-foreground outline-none"
           >
             <option value="English">English</option>
             <option value="Hindi">Hindi</option>
@@ -111,7 +127,7 @@ export default function PreferenceCard() {
 
         <button
           onClick={handleSave}
-          className="rounded-xl bg-white px-6 py-3 font-semibold text-black transition hover:bg-gray-200"
+          className="rounded-xl bg-primary px-6 py-3 font-semibold text-primary-foreground transition hover:opacity-90"
         >
           Save Preferences
         </button>

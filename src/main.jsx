@@ -5,7 +5,19 @@ import App from "./App";
 import "./index.css";
 import { Toaster } from "react-hot-toast";
 
+const saved = localStorage.getItem("preferences");
 
+if (saved) {
+  const preferences = JSON.parse(saved);
+
+  document.documentElement.classList.toggle(
+    "dark",
+    preferences.theme === "dark"
+  );
+} else {
+  // Default theme for new users
+  document.documentElement.classList.add("dark");
+}
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <BrowserRouter>

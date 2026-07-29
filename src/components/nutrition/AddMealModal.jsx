@@ -6,33 +6,27 @@ export default function AddMealModal({
   onClose,
   onMealCreated,
 }) {
-  const [calories, setCalories] = useState("");
-  const [protein, setProtein] = useState("");
-  const [carbs, setCarbs] = useState("");
-  const [fats, setFats] = useState("");
+  const [loading, setLoading] = useState(false);
 
   if (!isOpen) return null;
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
+  const handleCreateMeal = async () => {
     try {
+      setLoading(true);
+
       const token = localStorage.getItem("token");
 
       const response = await fetch(
         "http://localhost:5000/api/nutrition/create",
         {
           method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
-          },
+          headers: {"Content-Type": "application/json", Authorization:`Bearer ${token}`},
           body: JSON.stringify({
-            calories: Number(calories),
-            protein: Number(protein),
-            carbs: Number(carbs),
-            fats: Number(fats),
             meals: [],
+            calories: 0,
+            protein: 0,
+            carbs: 0,
+            fats: 0,
           }),
         }
       );
@@ -43,81 +37,48 @@ export default function AddMealModal({
         throw new Error(data.message);
       }
 
-      toast.success("Nutrition added!");
-
-      setCalories("");
-      setProtein("");
-      setCarbs("");
-      setFats("");
+      toast.success("Nutrition created successfully!");
 
       onMealCreated();
       onClose();
-    } catch (err) {
-      toast.error(err.message);
+    } catch (error) {
+      toast.error(error.message);
+    } finally {
+      setLoading(false);
     }
   };
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70">
-      <div className="w-full max-w-md rounded-2xl bg-[#111] p-6">
-        <h2 className="mb-6 text-2xl font-bold text-white">
-          Add Nutrition
+      <div className="w-full max-w-md rounded-2xl border border-border bg-card p-6">
+
+        <h2 className="text-2xl font-bold text-foreground">
+          Create Nutrition
         </h2>
 
-        <form onSubmit={handleSubmit} className="space-y-4">
-          <input
-            type="number"
-            placeholder="Calories"
-            value={calories}
-            onChange={(e) => setCalories(e.target.value)}
-            className="w-full rounded-xl bg-[#1f1f1f] p-3 text-white outline-none"
-            required
-          />
+        <p className="mt-2 text-muted-foreground">
+          Create today's nutrition tracker. You can add food items afterwards.
+        </p>
 
-          <input
-            type="number"
-            placeholder="Protein (g)"
-            value={protein}
-            onChange={(e) => setProtein(e.target.value)}
-            className="w-full rounded-xl bg-[#1f1f1f] p-3 text-white outline-none"
-            required
-          />
+        <div className="mt-8 flex justify-end gap-3">
 
-          <input
-            type="number"
-            placeholder="Carbs (g)"
-            value={carbs}
-            onChange={(e) => setCarbs(e.target.value)}
-            className="w-full rounded-xl bg-[#1f1f1f] p-3 text-white outline-none"
-            required
-          />
+          <button
+            onClick={onClose}
+            className="rounded-xl border border-border px-5 py-2 text-foreground transition hover:bg-accent"
+          >
+            Cancel
+          </button>
 
-          <input
-            type="number"
-            placeholder="Fats (g)"
-            value={fats}
-            onChange={(e) => setFats(e.target.value)}
-            className="w-full rounded-xl bg-[#1f1f1f] p-3 text-white outline-none"
-            required
-          />
+          <button
+            onClick={handleCreateMeal}
+            disabled={loading}
+            className="rounded-xl bg-primary px-5 py-2 font-semibold text-primary-foreground transition hover:opacity-90 disabled:opacity-50"
+          >
+            {loading ? "Creating..." : "Create Nutrition"}
+          </button>
 
-          <div className="flex justify-end gap-3 pt-2">
-            <button
-              type="button"
-              onClick={onClose}
-              className="rounded-xl border border-white/20 px-5 py-2 text-white"
-            >
-              Cancel
-            </button>
+        </div>
 
-            <button
-              type="submit"
-              className="rounded-xl bg-white px-5 py-2 font-semibold text-black"
-            >
-              Save
-            </button>
-          </div>
-        </form>
       </div>
     </div>
   );

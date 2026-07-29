@@ -82,13 +82,13 @@ export default function Profile() {
 
   if(loading){
     return (
-      <h1 className="p-10 text-white">
+      <h1 className="p-10 text-foreground">
         Loading...
       </h1>
     );
   }
   return (
-    <div className="min-h-screen bg-[#020202]">
+    <div className="min-h-screen bg-background">
       <Sidebar
         collapsed={collapsed}
         setCollapsed={setCollapsed}
@@ -99,153 +99,268 @@ export default function Profile() {
         }`}
       >
         <div className="p-10">
-          <h1 className="text-5xl font-bold text-white">
-            Profile
-          </h1>
-          <p className="mt-3 text-gray-400">
-            Manage your personal and fitness information
-          </p>
+          <div className="flex items-center justify-between">
+  <div>
+    <h1 className="text-5xl font-bold text-foreground">
+      Profile
+    </h1>
 
-          <button
-            onClick={()=>setEditMode(!editMode)} className="mt-6 rounded-xl bg-white px-5 py-3 font-semibold text-black">
-                {editMode ? "Cancel" : "Edit Profile"}
-                </button>
-                          <div className="mt-10 grid gap-6 md:grid-cols-2">
+    <p className="mt-3 text-muted-foreground">
+      Manage your personal and fitness information
+    </p>
+  </div>
 
-            {/* Personal Information */}
-            <div className="rounded-2xl border border-white/10 bg-[#111] p-6">
-              <h2 className="text-xl font-bold text-white">
-                Personal Information
-              </h2>
-              <div className="mt-5 space-y-5 text-gray-300">
-                <div>
-                  Name:{editMode ?<input name="name" value={formData.name} onChange={handleChange} className="ml-2 rounded-lg bg-[#222] p-2 text-white"/>
-                  : <span className="ml-2 text-white"> {user.name}
-                    </span>
-                  }
-                </div>
-
-                <div>
-                  Email:<span className="ml-2 text-white"> {user.email}</span>
-                </div>
-
-                <div>
-                  Age:{editMode ?<input
-                      name="age" value={formData.age} onChange={handleChange} className="ml-2 rounded-lg bg-[#222] p-2 text-white"/>
-                      : <span className="ml-2 text-white"> {user.age || "Not Set"}</span>
-                  }
-                </div>
-
-                <div>
-                  Weight:{editMode ? <input name="weight" value={formData.weight} onChange={handleChange} className="ml-2 rounded-lg bg-[#222] p-2 text-white"/>
-                  :
-                  <span className="ml-2 text-white"> {user.weight || "Not Set"}</span>
-                  }
-                </div>
-
-                <div>
-                  Height:{editMode ? <input name="height" value={formData.height} onChange={handleChange} className="ml-2 rounded-lg bg-[#222] p-2 text-white"
-                    />:
-                    <span className="ml-2 text-white">{user.height || "Not Set"}
-                    </span>
-                  }
-                </div>
-              </div>
-            </div>
-
-            {/* Fitness Information */}
-            <div className="rounded-2xl border border-white/10 bg-[#111] p-6">
-              <h2 className="text-xl font-bold text-white">
-                Fitness Information
-              </h2>
-              <div className="mt-5 space-y-5 text-gray-300">
-                <div>
-                  Goal:{editMode ? <select name="goal" value={formData.goal} onChange={handleChange} className="ml-2 rounded-lg bg-[#222] p-2 text-white"
-                    >
-                        <option value="">
-                        Select Goal
-                      </option>
-
-                      <option value="Weight Loss">
-                        Weight Loss
-                      </option>
-
-                      <option value="Muscle Gain">
-                        Muscle Gain
-                      </option>
-
-                      <option value="Maintain Fitness">
-                        Maintain Fitness
-                      </option>
-                    </select>
-                    :
-                    <span className="ml-2 text-white">
-                      {user.goal || "Not Set"}
-                    </span>
-                  }
-
-                </div>
-                <div>
-                    Fitness Level:{editMode ?<select name="fitnessLevel" value={formData.fitnessLevel} onChange={handleChange} className="ml-2 rounded-lg bg-[#222] p-2 text-white">
-
-                      <option value="">
-                        Select Level
-                      </option>
-
-                      <option value="Beginner">
-                        Beginner
-                      </option>
-
-                      <option value="Intermediate">
-                        Intermediate
-                      </option>
-
-                      <option value="Advanced">
-                        Advanced
-                      </option>
-                    </select>
-                    :
-                    <span className="ml-2 text-white">
-                      {user.fitnessLevel || "Not Set"}
-                    </span>
-                  }
-                </div>
-
-                <div>
-                  Activity Level:{editMode ? <select name="activityLevel" value={formData.activityLevel} onChange={handleChange} className="ml-2 rounded-lg bg-[#222] p-2 text-white">
-
-                      <option value="">
-                        Select Activity
-                      </option>
-
-                      <option value="Low">
-                        Low
-                      </option>
-
-                      <option value="Moderate">
-                        Moderate
-                      </option>
-
-                      <option value="High">
-                        High
-                      </option>
-                    </select>
-                    :
-                    <span className="ml-2 text-white">
-                      {user.activityLevel || "Not Set"}
-                    </span>
-                  }
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {editMode && <button onClick={updateProfile} className="mt-8 rounded-xl bg-green-500 px-6 py-3 font-semibold text-white hover:bg-green-600">
-            Save Changes
-             </button>
-}
+  <button
+    onClick={() => setEditMode(!editMode)}
+    className="rounded-xl bg-primary px-5 py-3 font-semibold text-primary-foreground transition hover:opacity-90"
+  >
+    {editMode ? "Cancel" : "Edit Profile"}
+  </button>
 </div>
+
+{/* Profile Header Card */}
+
+<div className="mt-10 rounded-3xl border border-border bg-card p-8">
+  <div className="flex flex-col items-center gap-6 md:flex-row">
+
+    <div className="flex h-28 w-28 items-center justify-center rounded-full bg-primary text-4xl font-bold text-primary-foreground">
+      {user.name?.charAt(0).toUpperCase()}
+    </div>
+
+    <div className="flex-1">
+
+      <h2 className="text-3xl font-bold text-foreground">
+        {user.name}
+      </h2>
+
+      <p className="mt-1 text-muted-foreground">
+        {user.email}
+      </p>
+
+      <div className="mt-5 flex flex-wrap gap-3">
+
+        <span className="rounded-full border border-border bg-background px-4 py-2 text-sm text-foreground">
+          🎯 {user.goal || "No Goal"}
+        </span>
+
+        <span className="rounded-full border border-border bg-background px-4 py-2 text-sm text-foreground">
+          💪 {user.fitnessLevel || "No Level"}
+        </span>
+
+        <span className="rounded-full border border-border bg-background px-4 py-2 text-sm text-foreground">
+          ⚡ {user.activityLevel || "No Activity"}
+        </span>
+
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+<div className="mt-10 grid gap-6 md:grid-cols-2">
+
+  {/* Personal Information */}
+
+  <div className="rounded-2xl border border-border bg-card p-6">
+
+    <h2 className="text-xl font-bold text-foreground">
+      Personal Information
+    </h2>
+
+    <div className="mt-6 space-y-5">
+
+      <div>
+        <label className="text-sm text-muted-foreground">
+          Name
+        </label>
+
+        {editMode ? (
+          <input
+            name="name"
+            value={formData.name}
+            onChange={handleChange}
+            className="mt-2 w-full rounded-xl border border-border bg-background px-4 py-3 text-foreground outline-none"
+          />
+        ) : (
+          <p className="mt-2 text-lg text-foreground">
+            {user.name}
+          </p>
+        )}
+      </div>
+
+      <div>
+        <label className="text-sm text-muted-foreground">
+          Email
+        </label>
+
+        <p className="mt-2 text-lg text-foreground">
+          {user.email}
+        </p>
+      </div>
+
+      <div>
+        <label className="text-sm text-muted-foreground">
+          Age
+        </label>
+
+        {editMode ? (
+          <input
+            name="age"
+            value={formData.age}
+            onChange={handleChange}
+            className="mt-2 w-full rounded-xl border border-border bg-background px-4 py-3 text-foreground"
+          />
+        ) : (
+          <p className="mt-2 text-lg text-foreground">
+            {user.age || "Not Set"}
+          </p>
+        )}
+      </div>
+
+      <div>
+        <label className="text-sm text-muted-foreground">
+          Weight
+        </label>
+
+        {editMode ? (
+          <input
+            name="weight"
+            value={formData.weight}
+            onChange={handleChange}
+            className="mt-2 w-full rounded-xl border border-border bg-background px-4 py-3 text-foreground"
+          />
+        ) : (
+          <p className="mt-2 text-lg text-foreground">
+            {user.weight || "Not Set"} 
+          </p>
+        )}
+      </div>
+
+      <div>
+        <label className="text-sm text-muted-foreground">
+          Height
+        </label>
+
+        {editMode ? (
+          <input
+            name="height"
+            value={formData.height}
+            onChange={handleChange}
+            className="mt-2 w-full rounded-xl border border-border bg-background px-4 py-3 text-foreground"
+          />
+        ) : (
+          <p className="mt-2 text-lg text-foreground">
+            {user.height || "Not Set"} 
+          </p>
+        )}
+      </div>
+
+    </div>
+
+  </div>
+
+  {/* Fitness Information */}
+
+  <div className="rounded-2xl border border-border bg-card p-6">
+
+    <h2 className="text-xl font-bold text-foreground">
+      Fitness Information
+    </h2>
+
+    <div className="mt-6 space-y-5">
+
+      <div>
+        <label className="text-sm text-muted-foreground">
+          Goal
+        </label>
+
+        {editMode ? (
+          <select
+            name="goal"
+            value={formData.goal}
+            onChange={handleChange}
+            className="mt-2 w-full rounded-xl border border-border bg-background px-4 py-3 text-foreground"
+          >
+            <option value="">Select Goal</option>
+            <option value="Weight Loss">Weight Loss</option>
+            <option value="Muscle Gain">Muscle Gain</option>
+            <option value="Maintain Fitness">Maintain Fitness</option>
+          </select>
+        ) : (
+          <p className="mt-2 text-lg text-foreground">
+            {user.goal || "Not Set"}
+          </p>
+        )}
+      </div>
+
+      <div>
+        <label className="text-sm text-muted-foreground">
+          Fitness Level
+        </label>
+
+        {editMode ? (
+          <select
+            name="fitnessLevel"
+            value={formData.fitnessLevel}
+            onChange={handleChange}
+            className="mt-2 w-full rounded-xl border border-border bg-background px-4 py-3 text-foreground"
+          >
+            <option value="">Select Level</option>
+            <option value="Beginner">Beginner</option>
+            <option value="Intermediate">Intermediate</option>
+            <option value="Advanced">Advanced</option>
+          </select>
+        ) : (
+          <p className="mt-2 text-lg text-foreground">
+            {user.fitnessLevel || "Not Set"}
+          </p>
+        )}
+      </div>
+
+      <div>
+        <label className="text-sm text-muted-foreground">
+          Activity Level
+        </label>
+
+        {editMode ? (
+          <select
+            name="activityLevel"
+            value={formData.activityLevel}
+            onChange={handleChange}
+            className="mt-2 w-full rounded-xl border border-border bg-background px-4 py-3 text-foreground"
+          >
+            <option value="">Select Activity</option>
+            <option value="Low">Low</option>
+            <option value="Moderate">Moderate</option>
+            <option value="High">High</option>
+          </select>
+        ) : (
+          <p className="mt-2 text-lg text-foreground">
+            {user.activityLevel || "Not Set"}
+          </p>
+        )}
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+{editMode && (
+  <div className="mt-8">
+    <button
+      onClick={updateProfile}
+      className="rounded-xl bg-primary px-8 py-3 font-semibold text-primary-foreground transition hover:opacity-90"
+    >
+      Save Changes
+    </button>
+  </div>
+)}
+        </div>
       </main>
     </div>
   );
 }
+          

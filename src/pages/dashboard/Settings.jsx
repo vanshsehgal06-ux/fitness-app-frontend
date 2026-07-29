@@ -12,7 +12,7 @@ export default function Settings() {
   const [collapsed, setCollapsed] = useState(false);
 
   return (
-    <div className="min-h-screen bg-[#020202]">
+    <div className="min-h-screen bg-background">
       <Sidebar
         collapsed={collapsed}
         setCollapsed={setCollapsed}
@@ -25,11 +25,11 @@ export default function Settings() {
       >
         <div className="mx-auto max-w-5xl p-10">
 
-          <h1 className="text-5xl font-bold text-white">
+          <h1 className="text-5xl font-bold text-foreground">
             Settings
           </h1>
 
-          <p className="mt-3 text-gray-400">
+          <p className="mt-3 text-muted-foreground">
             Manage your account and application preferences.
           </p>
 

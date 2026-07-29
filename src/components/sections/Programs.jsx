@@ -29,29 +29,23 @@ export default function Programs() {
   return (
     <section
       id="programs"
-      className="bg-[#020202] py-32 scroll-mt-24"
+      className="relative min-h-screen overflow-hidden bg-black px-6 pt-28 pb-20 text-white"
     >
       <div className="mx-auto max-w-7xl px-8">
         {/* Heading */}
-        <div className="mb-24 text-center">
-          <p className="text-sm uppercase tracking-[6px] text-gray-500">
+        <div className="mx-auto max-w-3x1 text-center">
+          <p className="mb-4 text-sm font-semibold uppercase tracking-[0.35em] text-gray-400">
             PROGRAMS
-          </p>
+            </p>
 
-          <h2 className="mt-5 text-6xl font-black text-white">
+          <h2 className="text-4xl font-black tracking-tight text-white sm:text-5xl lg:text-6xl">
             Choose Your
-            <br />
-            Training Style
+            <span className="block text-gray-400">Training Style</span>
           </h2>
-
-          <p className="mx-auto mt-8 max-w-2xl text-lg text-gray-400">
-            Every body is different. Pick a program that matches your
-            goals and let AI guide your transformation.
-          </p>
         </div>
 
         {/* Cards */}
-        <div className="grid gap-8 md:grid-cols-2">
+        <div className="grid gap-8 mt-8 md:grid-cols-2">
           {programs.map((program) => (
             <div
               key={program.title}

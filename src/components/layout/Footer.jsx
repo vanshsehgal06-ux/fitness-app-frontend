@@ -30,9 +30,9 @@ export default function Footer() {
         {/* Navigation */}
         <div className="mt-14 flex flex-wrap justify-center gap-10 text-gray-400">
 
-          <Link to="/" className="transition hover:text-white">
+          <a href="#home" className="transition hover:text-white">
             Home
-          </Link>
+          </a>
 
           <a href="#programs" className="transition hover:text-white">
             Programs

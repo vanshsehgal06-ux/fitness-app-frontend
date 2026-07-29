@@ -119,7 +119,7 @@ export default function Dashboard() {
   }
 
   return (
-    <div className="min-h-screen bg-[#020202]">
+    <div className="min-h-screen bg-background">
       <Sidebar
         collapsed={collapsed}
         setCollapsed={setCollapsed}

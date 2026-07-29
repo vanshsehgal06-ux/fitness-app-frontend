@@ -86,52 +86,52 @@ export default function AccountCard() {
     );
   }
 
-  return (
-    <div className="rounded-2xl border border-white/10 bg-[#111] p-6">
-      <h2 className="text-2xl font-bold text-white">
-        Account
-      </h2>
+return (
+  <div className="rounded-2xl border border-border bg-card p-6">
+    <h2 className="text-2xl font-bold text-foreground">
+      Account
+    </h2>
 
-      <p className="mt-2 text-gray-400">
-        Update your account information.
-      </p>
+    <p className="mt-2 text-muted-foreground">
+      Update your account information.
+    </p>
 
-      <div className="mt-6 space-y-5">
-        <div>
-          <label className="mb-2 block text-sm text-gray-400">
-            Name
-          </label>
+    <div className="mt-6 space-y-5">
+      <div>
+        <label className="mb-2 block text-sm text-muted-foreground">
+          Name
+        </label>
 
-          <input
-            type="text"
-            name="name"
-            value={formData.name}
-            onChange={handleChange}
-            className="w-full rounded-xl bg-[#1a1a1a] px-4 py-3 text-white outline-none"
-          />
-        </div>
-
-        <div>
-          <label className="mb-2 block text-sm text-gray-400">
-            Email
-          </label>
-
-          <input
-            type="email"
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
-            className="w-full rounded-xl bg-[#1a1a1a] px-4 py-3 text-white outline-none"
-          />
-        </div>
-
-        <button
-          onClick={handleSave}
-          className="rounded-xl bg-white px-6 py-3 font-semibold text-black transition hover:bg-gray-200"
-        >
-          Save Changes
-        </button>
+        <input
+          type="text"
+          name="name"
+          value={formData.name}
+          onChange={handleChange}
+          className="w-full rounded-xl border border-border bg-background px-4 py-3 text-foreground placeholder:text-muted-foreground outline-none transition focus:border-primary"
+        />
       </div>
+
+      <div>
+        <label className="mb-2 block text-sm text-muted-foreground">
+          Email
+        </label>
+
+        <input
+          type="email"
+          name="email"
+          value={formData.email}
+          onChange={handleChange}
+          className="w-full rounded-xl border border-border bg-background px-4 py-3 text-foreground placeholder:text-muted-foreground outline-none transition focus:border-primary"
+        />
+      </div>
+
+      <button
+        onClick={handleSave}
+        className="rounded-xl bg-primary px-6 py-3 font-semibold text-primary-foreground transition hover:opacity-90"
+      >
+        Save Changes
+      </button>
     </div>
-  );
+  </div>
+);
 }

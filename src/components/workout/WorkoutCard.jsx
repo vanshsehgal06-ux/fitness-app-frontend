@@ -104,60 +104,63 @@ onWorkoutUpdated();
     toast.error(error.message); }
 };
 
-  return (
-    <>
-      <div className="rounded-2xl bg-[#1a1a1a] p-6">
+return (
+  <>
+    <div className="rounded-2xl border border-border bg-card p-6">
+      <div className="flex items-center justify-between">
+        <div>
+          <h2 className="text-2xl font-bold text-foreground">
+            {workout.title}
+          </h2>
 
-        <div className="flex items-center justify-between">
+          <p className="mt-2 text-muted-foreground">
+            {workout.category} • {workout.duration} mins
+          </p>
+        </div>
 
-          <div>
-            <h2 className="text-2xl font-bold text-white">
-              {workout.title}
-            </h2>
+        <div className="flex gap-3">
+          <button
+            onClick={() => setExerciseOpen(true)}
+            className="flex items-center gap-2 rounded-xl bg-primary px-4 py-2 font-semibold text-primary-foreground transition hover:opacity-90"
+          >
+            <Plus size={18} />
+            Add Exercise
+          </button>
 
-            <p className="mt-2 text-gray-400">
-              {workout.category} • {workout.duration} mins
-            </p>
-          </div>
-          
-          <div className="flex gap-3">
-            <button onClick={() => setExerciseOpen(true)} className="flex items-center gap-2 rounded-xl bg-white px-4 py-2 font-semibold text-black hover:bg-gray-200">
-                <Plus size={18} /> Add Exercise </button>
-                
-                <button onClick={deleteWorkout} className="rounded-xl bg-red-500 p-3 text-white hover:bg-red-600"> 
-                    <Trash2 size={18} /> </button>
-                    </div>
-                    </div>
-
-        {workout.exercises.length === 0 ? (
-
-          <div className="mt-8 rounded-xl border border-dashed border-white/10 p-6 text-center text-gray-400">
-            No exercises added yet.
-          </div>
-
-        ) : (
-
-          <div className="mt-6 space-y-4">
-            {workout.exercises.map((exercise, index) => (
-              <ExerciseItem
-                key={index}
-                exercise={exercise}
-                index={index}
-                onToggle={toggleExercise}
-                onDelete={deleteExercise}
-              />
-            ))}
-          </div>
-
-        )}
+          <button
+            onClick={deleteWorkout}
+            className="rounded-xl bg-red-500 p-3 text-white transition hover:bg-red-600"
+          >
+            <Trash2 size={18} />
+          </button>
+        </div>
       </div>
 
-      <AddExerciseModal
-        isOpen={exerciseOpen}
-        onClose={() => setExerciseOpen(false)}
-        workout={workout}
-        onExerciseAdded={onWorkoutUpdated}
-      />
-    </>
-  );
+      {workout.exercises.length === 0 ? (
+        <div className="mt-8 rounded-xl border border-dashed border-border bg-background p-6 text-center text-muted-foreground">
+          No exercises added yet.
+        </div>
+      ) : (
+        <div className="mt-6 space-y-4">
+          {workout.exercises.map((exercise, index) => (
+            <ExerciseItem
+              key={index}
+              exercise={exercise}
+              index={index}
+              onToggle={toggleExercise}
+              onDelete={deleteExercise}
+            />
+          ))}
+        </div>
+      )}
+    </div>
+
+    <AddExerciseModal
+      isOpen={exerciseOpen}
+      onClose={() => setExerciseOpen(false)}
+      workout={workout}
+      onExerciseAdded={onWorkoutUpdated}
+    />
+  </>
+);
 }

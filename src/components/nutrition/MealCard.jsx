@@ -40,16 +40,16 @@ export default function MealCard({
   };
 
   return (
-    <div className="rounded-2xl bg-[#111] p-6 border border-white/10">
+    <div className="rounded-2xl border border-border bg-card p-6">
 
       <div className="flex items-center justify-between">
 
         <div>
-          <h2 className="text-2xl font-bold text-white">
+          <h2 className="text-2xl font-bold text-foreground">
             Daily Nutrition
           </h2>
 
-          <p className="mt-1 text-gray-400">
+          <p className="mt-1 text-muted-foreground">
             {meal.meals.length} food item(s)
           </p>
         </div>
@@ -58,7 +58,7 @@ export default function MealCard({
 
           <button
             onClick={() => setFoodOpen(true)}
-            className="flex items-center gap-2 rounded-xl bg-white px-4 py-2 font-semibold text-black hover:bg-gray-200"
+            className="flex items-center gap-2 rounded-xl bg-primary px-4 py-2 font-semibold text-primary-foreground transition hover:opacity-90"
           >
             <Plus size={18} />
             Add Food
@@ -66,7 +66,7 @@ export default function MealCard({
 
           <button
             onClick={deleteMeal}
-            className="rounded-xl bg-red-500 p-3 text-white hover:bg-red-600"
+            className="rounded-xl bg-red-500 p-3 text-white transition hover:bg-red-600"
           >
             <Trash2 size={18} />
           </button>
@@ -77,30 +77,34 @@ export default function MealCard({
 
       <div className="mt-6 grid grid-cols-2 gap-4 md:grid-cols-4">
 
-        <div className="rounded-xl bg-[#1a1a1a] p-4">
-          <p className="text-gray-400">Calories</p>
-          <h3 className="mt-2 text-2xl font-bold text-white">
+        <div className="rounded-xl border border-border bg-background p-4">
+          <p className="text-muted-foreground">Calories</p>
+
+          <h3 className="mt-2 text-2xl font-bold text-foreground">
             {meal.calories}
           </h3>
         </div>
 
-        <div className="rounded-xl bg-[#1a1a1a] p-4">
-          <p className="text-gray-400">Protein</p>
-          <h3 className="mt-2 text-2xl font-bold text-white">
+        <div className="rounded-xl border border-border bg-background p-4">
+          <p className="text-muted-foreground">Protein</p>
+
+          <h3 className="mt-2 text-2xl font-bold text-foreground">
             {meal.protein} g
           </h3>
         </div>
 
-        <div className="rounded-xl bg-[#1a1a1a] p-4">
-          <p className="text-gray-400">Carbs</p>
-          <h3 className="mt-2 text-2xl font-bold text-white">
+        <div className="rounded-xl border border-border bg-background p-4">
+          <p className="text-muted-foreground">Carbs</p>
+
+          <h3 className="mt-2 text-2xl font-bold text-foreground">
             {meal.carbs} g
           </h3>
         </div>
 
-        <div className="rounded-xl bg-[#1a1a1a] p-4">
-          <p className="text-gray-400">Fats</p>
-          <h3 className="mt-2 text-2xl font-bold text-white">
+        <div className="rounded-xl border border-border bg-background p-4">
+          <p className="text-muted-foreground">Fats</p>
+
+          <h3 className="mt-2 text-2xl font-bold text-foreground">
             {meal.fats} g
           </h3>
         </div>
@@ -109,12 +113,12 @@ export default function MealCard({
 
       <div className="mt-8">
 
-        <h3 className="mb-4 text-xl font-semibold text-white">
+        <h3 className="mb-4 text-xl font-semibold text-foreground">
           Food Items
         </h3>
 
         {meal.meals.length === 0 ? (
-          <p className="text-gray-400">
+          <p className="text-muted-foreground">
             No food items added.
           </p>
         ) : (

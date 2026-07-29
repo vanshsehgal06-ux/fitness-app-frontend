@@ -51,13 +51,13 @@ export default function PlannerModal({ isOpen, onClose, onPlannerCreated }) {
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70">
-      <div className="w-full max-w-lg rounded-2xl bg-[#111111] p-8">
+      <div className="w-full max-w-lg rounded-2xl bg-card border border-border p-8">
 
-        <h2 className="text-3xl font-bold text-white">
+        <h2 className="text-3xl font-bold text-foreground">
           Create Today's Planner
         </h2>
 
-        <p className="mt-2 text-gray-400">
+        <p className="mt-2 text-muted-foreground">
           Add the tasks you want to complete today.
         </p>
 
@@ -75,8 +75,8 @@ export default function PlannerModal({ isOpen, onClose, onPlannerCreated }) {
                   updatedTasks[index] = e.target.value;
                   setTasks(updatedTasks);
                 }}
-                className="flex-1 rounded-xl border border-white/10 bg-[#1a1a1a] px-4 py-3 text-white placeholder-gray-500 outline-none focus:border-white"
-              />
+                className="flex-1 rounded-xl border border-border bg-background px-4 py-3 text-foreground placeholder:text-muted-foreground outline-none focus:border-foreground"
+                />
 
               {tasks.length > 1 && (
                 <button
@@ -87,7 +87,7 @@ export default function PlannerModal({ isOpen, onClose, onPlannerCreated }) {
                     );
                     setTasks(updatedTasks);
                   }}
-                  className="rounded-xl bg-red-500 px-4 py-3 text-white transition hover:bg-red-600"
+                  className="rounded-xl bg-red-500 px-4 py-3 text-foreground transition hover:bg-red-600"
                 >
                   ✕
                 </button>
@@ -101,8 +101,8 @@ export default function PlannerModal({ isOpen, onClose, onPlannerCreated }) {
         <button
           type="button"
           onClick={() => setTasks([...tasks, ""])}
-          className="mt-5 flex w-full items-center justify-center gap-2 rounded-xl border border-white/10 bg-white/5 py-3 text-white font-medium transition-all duration-300 hover:border-white/20 hover:bg-white/10"
-        >
+          className="mt-5 flex w-full items-center justify-center gap-2 rounded-xl border border-border bg-card py-3 font-medium text-foreground transition-all duration-300 hover:bg-accent"
+          >
           + Add Task
         </button>
 
@@ -112,16 +112,16 @@ export default function PlannerModal({ isOpen, onClose, onPlannerCreated }) {
           <button
             type="button"
             onClick={onClose}
-            className="rounded-xl border border-white/10 px-6 py-3 text-white transition hover:bg-white/10"
-          >
+            className="rounded-xl border border-border px-6 py-3 text-foreground transition hover:bg-accent"
+            >
             Cancel
           </button>
 
           <button
             type="button"
             onClick={handleCreatePlanner}
-            className="rounded-xl bg-white px-6 py-3 font-semibold text-black transition hover:bg-gray-200"
-          >
+            className="rounded-xl bg-primary px-6 py-3 font-semibold text-primary-foreground transition hover:opacity-90"
+            >
             Create Planner
           </button>
 

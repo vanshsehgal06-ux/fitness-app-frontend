@@ -21,13 +21,7 @@ export default function AddFoodModal({
     try {
       const token = localStorage.getItem("token");
 
-      const newFood = {
-        name,
-        calories: Number(calories),
-        protein: Number(protein),
-        carbs: Number(carbs),
-        fats: Number(fats),
-      };
+      const newFood = {name, calories: Number(calories), protein: Number(protein), carbs: Number(carbs), fats: Number(fats)};
 
       const updatedMeals = [...meal.meals, newFood];
 
@@ -92,8 +86,8 @@ export default function AddFoodModal({
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70">
-      <div className="w-full max-w-md rounded-2xl bg-[#111] p-6">
-        <h2 className="mb-6 text-2xl font-bold text-white">
+      <div className="w-full max-w-md rounded-2xl border border-border bg-card p-6">
+        <h2 className="mb-6 text-2xl font-bold text-foreground">
           Add Food Item
         </h2>
 
@@ -104,7 +98,7 @@ export default function AddFoodModal({
             placeholder="Food Name"
             value={name}
             onChange={(e) => setName(e.target.value)}
-            className="w-full rounded-xl bg-[#1f1f1f] p-3 text-white outline-none"
+            className="w-full rounded-xl border border-border bg-background p-3 text-foreground placeholder:text-muted-foreground outline-none focus:border-foreground"
             required
           />
 
@@ -113,7 +107,7 @@ export default function AddFoodModal({
             placeholder="Calories"
             value={calories}
             onChange={(e) => setCalories(e.target.value)}
-            className="w-full rounded-xl bg-[#1f1f1f] p-3 text-white outline-none"
+            className="w-full rounded-xl border border-border bg-background p-3 text-foreground placeholder:text-muted-foreground outline-none focus:border-foreground"
             required
           />
 
@@ -122,7 +116,7 @@ export default function AddFoodModal({
             placeholder="Protein (g)"
             value={protein}
             onChange={(e) => setProtein(e.target.value)}
-            className="w-full rounded-xl bg-[#1f1f1f] p-3 text-white outline-none"
+            className="w-full rounded-xl border border-border bg-background p-3 text-foreground placeholder:text-muted-foreground outline-none focus:border-foreground"
             required
           />
 
@@ -131,7 +125,7 @@ export default function AddFoodModal({
             placeholder="Carbs (g)"
             value={carbs}
             onChange={(e) => setCarbs(e.target.value)}
-            className="w-full rounded-xl bg-[#1f1f1f] p-3 text-white outline-none"
+            className="w-full rounded-xl border border-border bg-background p-3 text-foreground placeholder:text-muted-foreground outline-none focus:border-foreground"
             required
           />
 
@@ -140,7 +134,7 @@ export default function AddFoodModal({
             placeholder="Fats (g)"
             value={fats}
             onChange={(e) => setFats(e.target.value)}
-            className="w-full rounded-xl bg-[#1f1f1f] p-3 text-white outline-none"
+            className="w-full rounded-xl border border-border bg-background p-3 text-foreground placeholder:text-muted-foreground outline-none focus:border-foreground"
             required
           />
 
@@ -148,14 +142,14 @@ export default function AddFoodModal({
             <button
               type="button"
               onClick={onClose}
-              className="rounded-xl border border-white/20 px-5 py-2 text-white"
+              className="rounded-xl border border-border px-5 py-2 text-foreground transition hover:bg-accent"
             >
               Cancel
             </button>
 
             <button
               type="submit"
-              className="rounded-xl bg-white px-5 py-2 font-semibold text-black hover:bg-gray-200"
+              className="rounded-xl bg-primary px-5 py-2 font-semibold text-primary-foreground transition hover:opacity-90"
             >
               Add Food
             </button>

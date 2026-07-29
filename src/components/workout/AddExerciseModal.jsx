@@ -66,56 +66,56 @@ export default function AddExerciseModal({
     }
   };
 
-  return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70">
-      <div className="w-full max-w-md rounded-2xl bg-[#111] p-8">
+return (
+  <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70">
+    <div className="w-full max-w-md rounded-2xl border border-border bg-card p-8">
 
-        <h2 className="text-2xl font-bold text-white">
+      <h2 className="text-2xl font-bold text-foreground">
+        Add Exercise
+      </h2>
+
+      <input
+        className="mt-6 w-full rounded-xl border border-border bg-background p-4 text-foreground outline-none placeholder:text-muted-foreground focus:border-primary"
+        placeholder="Exercise Name"
+        value={name}
+        onChange={(e) => setName(e.target.value)}
+      />
+
+      <input
+        type="number"
+        className="mt-4 w-full rounded-xl border border-border bg-background p-4 text-foreground outline-none placeholder:text-muted-foreground focus:border-primary"
+        placeholder="Sets"
+        value={sets}
+        onChange={(e) => setSets(e.target.value)}
+      />
+
+      <input
+        type="number"
+        className="mt-4 w-full rounded-xl border border-border bg-background p-4 text-foreground outline-none placeholder:text-muted-foreground focus:border-primary"
+        placeholder="Reps"
+        value={reps}
+        onChange={(e) => setReps(e.target.value)}
+      />
+
+      <div className="mt-8 flex justify-end gap-3">
+
+        <button
+          onClick={onClose}
+          className="rounded-xl border border-border bg-background px-5 py-3 text-foreground transition hover:bg-accent"
+        >
+          Cancel
+        </button>
+
+        <button
+          onClick={handleAddExercise}
+          className="rounded-xl bg-primary px-5 py-3 font-semibold text-primary-foreground transition hover:opacity-90"
+        >
           Add Exercise
-        </h2>
-
-        <input
-          className="mt-6 w-full rounded-xl border border-white/10 bg-[#1a1a1a] p-4 text-white outline-none"
-          placeholder="Exercise Name"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-        />
-
-        <input
-          type="number"
-          className="mt-4 w-full rounded-xl border border-white/10 bg-[#1a1a1a] p-4 text-white outline-none"
-          placeholder="Sets"
-          value={sets}
-          onChange={(e) => setSets(e.target.value)}
-        />
-
-        <input
-          type="number"
-          className="mt-4 w-full rounded-xl border border-white/10 bg-[#1a1a1a] p-4 text-white outline-none"
-          placeholder="Reps"
-          value={reps}
-          onChange={(e) => setReps(e.target.value)}
-        />
-
-        <div className="mt-8 flex justify-end gap-3">
-
-          <button
-            onClick={onClose}
-            className="rounded-xl border border-white/10 px-5 py-3 text-white"
-          >
-            Cancel
-          </button>
-
-          <button
-            onClick={handleAddExercise}
-            className="rounded-xl bg-white px-5 py-3 font-semibold text-black"
-          >
-            Add Exercise
-          </button>
-
-        </div>
+        </button>
 
       </div>
+
     </div>
-  );
+  </div>
+);
 }

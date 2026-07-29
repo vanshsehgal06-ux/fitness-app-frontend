@@ -47,77 +47,77 @@ export default function NotificationCard() {
     </button>
   );
 
-  return (
-    <div className="rounded-2xl border border-white/10 bg-[#111] p-6">
-      <h2 className="text-2xl font-bold text-white">
-        Notifications
-      </h2>
+return (
+  <div className="rounded-2xl border border-border bg-card p-6">
+    <h2 className="text-2xl font-bold text-foreground">
+      Notifications
+    </h2>
 
-      <p className="mt-2 text-gray-400">
-        Manage your reminder preferences.
-      </p>
+    <p className="mt-2 text-muted-foreground">
+      Manage your reminder preferences.
+    </p>
 
-      <div className="mt-8 space-y-6">
+    <div className="mt-8 space-y-6">
 
-        <div className="flex items-center justify-between">
-          <div>
-            <h3 className="text-white font-semibold">
-              Workout Reminder
-            </h3>
+      <div className="flex items-center justify-between">
+        <div>
+          <h3 className="font-semibold text-foreground">
+            Workout Reminder
+          </h3>
 
-            <p className="text-sm text-gray-400">
-              Get reminded to complete your workout.
-            </p>
-          </div>
-
-          <Toggle
-            checked={notifications.workoutReminder}
-            onClick={() => toggleNotification("workoutReminder")}
-          />
+          <p className="text-sm text-muted-foreground">
+            Get reminded to complete your workout.
+          </p>
         </div>
 
-        <div className="flex items-center justify-between">
-          <div>
-            <h3 className="text-white font-semibold">
-              Meal Reminder
-            </h3>
-
-            <p className="text-sm text-gray-400">
-              Never miss your meals.
-            </p>
-          </div>
-
-          <Toggle
-            checked={notifications.mealReminder}
-            onClick={() => toggleNotification("mealReminder")}
-          />
-        </div>
-
-        <div className="flex items-center justify-between">
-          <div>
-            <h3 className="text-white font-semibold">
-              Water Reminder
-            </h3>
-
-            <p className="text-sm text-gray-400">
-              Stay hydrated throughout the day.
-            </p>
-          </div>
-
-          <Toggle
-            checked={notifications.waterReminder}
-            onClick={() => toggleNotification("waterReminder")}
-          />
-        </div>
-
-        <button
-          onClick={handleSave}
-          className="rounded-xl bg-white px-6 py-3 font-semibold text-black transition hover:bg-gray-200"
-        >
-          Save Notifications
-        </button>
-
+        <Toggle
+          checked={notifications.workoutReminder}
+          onClick={() => toggleNotification("workoutReminder")}
+        />
       </div>
+
+      <div className="flex items-center justify-between">
+        <div>
+          <h3 className="font-semibold text-foreground">
+            Meal Reminder
+          </h3>
+
+          <p className="text-sm text-muted-foreground">
+            Never miss your meals.
+          </p>
+        </div>
+
+        <Toggle
+          checked={notifications.mealReminder}
+          onClick={() => toggleNotification("mealReminder")}
+        />
+      </div>
+
+      <div className="flex items-center justify-between">
+        <div>
+          <h3 className="font-semibold text-foreground">
+            Water Reminder
+          </h3>
+
+          <p className="text-sm text-muted-foreground">
+            Stay hydrated throughout the day.
+          </p>
+        </div>
+
+        <Toggle
+          checked={notifications.waterReminder}
+          onClick={() => toggleNotification("waterReminder")}
+        />
+      </div>
+
+      <button
+        onClick={handleSave}
+        className="rounded-xl bg-primary px-6 py-3 font-semibold text-primary-foreground transition hover:opacity-90"
+      >
+        Save Notifications
+      </button>
+
     </div>
-  );
+  </div>
+);
 }

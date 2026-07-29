@@ -38,7 +38,7 @@ export default function Signup(){
     toast.success("Account Created Successfully!");
 
     setTimeout(()=>{
-      navigate("/dashboard",{
+      navigate("/dashboard/profile",{
         state:{
           isNewUser: true,
           username:name
@@ -94,11 +94,7 @@ export default function Signup(){
                 Email
               </label>
 
-              <input
-                type="email"
-                placeholder="john@example.com"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
+              <input type="email" placeholder="john@example.com" value={email} onChange={(e) => setEmail(e.target.value)}
                 className="mt-2 w-full rounded-xl bg-white/5 border border-white/10 px-4 py-3 text-white placeholder-gray-500 outline-none focus:border-white transition"
               />
             </div>
@@ -108,11 +104,7 @@ export default function Signup(){
                 Password
               </label>
 
-              <input
-                type="password"
-                placeholder="********"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
+              <input type="password" placeholder="********" value={password} onChange={(e) => setPassword(e.target.value)}
                 className="mt-2 w-full rounded-xl bg-white/5 border border-white/10 px-4 py-3 text-white placeholder-gray-500 outline-none focus:border-white transition"
               />
             </div>

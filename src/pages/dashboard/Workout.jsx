@@ -44,7 +44,7 @@ export default function Workout() {
 
   if (loading) {
     return (
-      <h1 className="p-10 text-white">
+      <h1 className="p-10 text-foreground">
         Loading...
       </h1>
     );
@@ -59,7 +59,7 @@ export default function Workout() {
   }
 
   return (
-    <div className="min-h-screen bg-[#020202]">
+    <div className="min-h-screen bg-background">
       <Sidebar
         collapsed={collapsed}
         setCollapsed={setCollapsed}
@@ -74,41 +74,43 @@ export default function Workout() {
           {/* Page Heading */}
           <div className="flex items-center justify-between">
             <div>
-              <h1 className="text-5xl font-bold text-white">
+              <h1 className="text-5xl font-bold text-foreground">
                 Workouts
               </h1>
 
-              <p className="mt-3 text-gray-400">
+              <p className="mt-3 text-muted-foreground">
                 Track your workouts and build consistency.
               </p>
             </div>
 
+             {workouts.length > 0 && (
             <button
               onClick={() => setModalOpen(true)}
-              className="rounded-xl bg-white px-5 py-3 font-semibold text-black transition hover:bg-gray-200"
-            >
+              className="rounded-xl bg-primary px-5 py-3 font-semibold text-primary-foreground transition hover:opacity-90"
+              >
               + Add Workout
             </button>
+             )}
           </div>
 
           {/* Workout List */}
           <div className="mt-10">
             {workouts.length === 0 ? (
-              <div className="rounded-2xl border border-white/10 bg-[#111] py-20 text-center">
+              <div className="rounded-2xl border border-border bg-card py-20 text-center">
                 <div className="text-6xl">🏋️</div>
 
-                <h2 className="mt-5 text-2xl font-bold text-white">
+                <h2 className="mt-5 text-2xl font-bold text-foreground">
                   No Workouts Found
                 </h2>
 
-                <p className="mt-3 text-gray-400">
+                <p className="mt-3 text-muted-foreground">
                   Create your first workout to start tracking your fitness journey.
                 </p>
 
                 <button
                   onClick={() => setModalOpen(true)}
-                  className="mt-8 rounded-xl bg-white px-6 py-3 font-semibold text-black hover:bg-gray-200"
-                >
+                  className="mt-8 rounded-xl bg-primary px-6 py-3 font-semibold text-primary-foreground transition hover:opacity-90"
+                  >
                   Create Workout
                 </button>
               </div>
